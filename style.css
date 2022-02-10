@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 @font-face {
     font-family: Righteous;
     src: url(./font/Righteous-Regular.ttf);
@@ -34,4 +39,25 @@ body{
     background-color: #05c3ff;
     color: #101c2c;
     font-size: 30px;
+}
+#gameOver{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: none;
+    top: 0;
+    font-size: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#restart{
+    padding: 20px;
+    font-size: 20px;
+    background-color: yellow;
+    border-radius: 10px;
+    margin-top: 15px;
+    border-style:none
 }
