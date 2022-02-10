@@ -9,10 +9,13 @@
 }
 body{
     font-family: Righteous, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #c7cdd3;
 }
 .card{
-    width: 150px;
-    height: 150px;
     position: relative;
     transform-style: preserve-3d;
     transition-duration: .5s;
@@ -60,4 +63,12 @@ body{
     border-radius: 10px;
     margin-top: 15px;
     border-style:none
+}
+#gameBoard{
+    width: 45%;
+    aspect-ratio: 5/4;
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+
 }
