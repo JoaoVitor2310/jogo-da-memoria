@@ -10,18 +10,36 @@ let flags = ['brazil',
     'germany',
     'portugal',
     'sweeden',
-    'USA'
-];
-createCardsFromFlags(flags);
-function createCardsFromFlags(flags){
-    let cards = [];
-    for(let flag of flags){
-        cards.push(createPairFromFlags(flag));
-    }
-    console.log(cards.flatMap(pair => pair));
+    'USA'];
+
+let cards = null;
+startGame();
+
+function startGame(){
+    cards = createCardsFromFlags(flags);
+    shuffleCards(cards);
+    console.log(cards);
 }
 
-function createPairFromFlags(flag){
+function shuffleCards(cards){
+    let currentIndex = (cards.length);
+    let randomIndex = 0;
+    while(currentIndex !== 0){
+        randomIndex = (Math.floor(Math.random() *currentIndex));
+        currentIndex--;
+        [cards[randomIndex], cards[currentIndex]] = [cards[currentIndex], cards[randomIndex]];
+    }
+}
+
+function createCardsFromFlags(flags){
+    cards = [];
+    for(let flag of flags){
+        cards.push(createPairFromFlag(flag));
+    }
+    return (cards.flatMap(pair => pair));
+}
+
+function createPairFromFlag(flag){
     return [{
         id: createIdWithFlag(flag),
         icon: flag,
