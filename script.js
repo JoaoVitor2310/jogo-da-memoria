@@ -1,5 +1,7 @@
 const FRONT = "card-front";
 const BACK =  "card-back";
+const CARD = "card";
+const ICON = "icon";
 
 let flags = ['brazil',
     'argentina',
@@ -18,7 +20,39 @@ startGame();
 function startGame(){
     cards = createCardsFromFlags(flags);
     shuffleCards(cards);
-    console.log(cards);
+    initializeCards(cards);
+}
+
+function initializeCards(cards){
+    let gameBoard = document.getElementById("gameBoard");
+    cards.forEach(card => {
+        let cardElement = document.createElement('div');
+        cardElement.id = card.id;
+        cardElement.classList.add(CARD);
+        cardElement.dataset.icon = card.icon;
+        createCardContent(card, cardElement);
+        cardElement.addEventListener('click', flipCard);
+        gameBoard.appendChild(cardElement);
+    })
+}
+
+function createCardContent(card, cardElement){
+    createCardFace(FRONT, card, cardElement);
+    createCardFace(BACK, card, cardElement);
+}
+
+function createCardFace(face, card, element){
+    let cardElementFace = document.createElement('div');
+    cardElementFace.classList.add(face);
+    if(face === FRONT){
+        let iconElement = document.createElement('img');
+        iconElement.classList.add(ICON);
+        iconElement.src = "./images/" + card.icon + ".png";
+        cardElementFace.appendChild(iconElement);
+    }else{
+        cardElementFace.innerHTML = "&lt/&gt";
+    }
+    element.appendChild(cardElementFace);
 }
 
 function shuffleCards(cards){
@@ -33,9 +67,9 @@ function shuffleCards(cards){
 
 function createCardsFromFlags(flags){
     cards = [];
-    for(let flag of flags){
+    flags.forEach((flag) => {
         cards.push(createPairFromFlag(flag));
-    }
+    })
     return (cards.flatMap(pair => pair));
 }
 
@@ -53,4 +87,8 @@ function createPairFromFlag(flag){
 
 function createIdWithFlag(flag){
     return flag + parseInt(Math.random() *100);
+}
+
+function flipCard(){
+    this.classList.add("flip");
 }
