@@ -50,8 +50,10 @@ function flipCard(){
             if(game.checkMatch()){
                 game.clearCards();
                 if(game.checkGameOver()){
-                    let gameOverLayer = document.getElementById("gameOver");
-                    gameOverLayer.style.display = 'flex';
+                    setTimeout(()=>{
+                        let gameOverLayer = document.getElementById("gameOver");
+                        gameOverLayer.style.display = 'flex';
+                    }, 500);
                 }
             }else{
                 setTimeout(()=> {
