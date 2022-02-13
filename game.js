@@ -3,6 +3,19 @@ let game = {
     firstCard: null,
     secondCard: null,
 
+    flags: ['brazil',
+    'argentina',
+    'uruguay',
+    'canada',
+    'chile',
+    'england',
+    'germany',
+    'portugal',
+    'sweeden',
+    'USA'],
+
+    cards:  null,
+
     setCard: function(id){
         let card = this.cards.filter(card=>card.id === id)[0];
         //console.log(card);
@@ -41,18 +54,9 @@ let game = {
         this.clearCards();
     },
 
-    flags: ['brazil',
-    'argentina',
-    'uruguay',
-    'canada',
-    'chile',
-    'england',
-    'germany',
-    'portugal',
-    'sweeden',
-    'USA'],
-
-    cards:  null,
+    checkGameOver(){
+        return this.cards.filter(card=>!card.flipped).length == 0;  
+    },
 
     createCardsFromFlags: function(){
         this.cards = [];
