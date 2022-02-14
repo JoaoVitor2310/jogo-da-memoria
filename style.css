@@ -71,7 +71,7 @@ h2#moves1{
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     display: none;
-     /* Aqui */
+     /* none */
     top: 0;
     font-size: 50px;
     justify-content: center;
@@ -91,4 +91,58 @@ h2#moves2{
 }
 #restart:hover{
     cursor: pointer;
+}
+@media screen and (max-width: 1450px){
+    h1{
+        margin-top: 20px;
+    }
+    h2#moves1{
+        margin-top: 60px;
+    }
+    #gameBoard{
+        width: 55%;
+        margin-top: 50px;
+    }
+}    
+
+@media screen and (max-width: 780px){
+    h1{
+        margin-top: 30px;
+        font-size: 40px;
+    }
+    h2#moves1{
+        margin-top: 80px;
+    }
+    #gameBoard{
+        width: 90%;
+        margin-top: 50px;
+    }
+
+
+
+
+}
+
+@media screen and (max-width: 430px){
+    h1{
+        margin-top: 10px;
+        width: 80%;
+        font-size: 30px;
+        text-align: center;
+    }
+    h2#moves1{
+        margin-top: 80px;
+    }
+    #gameBoard{
+        margin-top: 60px;
+        aspect-ratio: 4/7;
+    }
+}
+
+@media screen and (max-height: 670px){
+    #gameBoard{
+        width: 90%;
+        margin-top: 70px;
+        aspect-ratio: 4/6;
+    }
 }

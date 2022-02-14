@@ -36,10 +36,19 @@ function createCardFace(face, card, element){
         let iconElement = document.createElement('img');
         iconElement.classList.add(ICON);
         iconElement.src = "./images/" + card.icon + ".png";
+        // if(innerWidth < 430 && innerWidth> 380){
+        //     iconElement.src = "./images/" + card.icon + "-110.png";
+        // }
+        if(innerWidth < 430 && innerWidth> 380){
+            iconElement.src = "./images/" + card.icon + "-72.png";
+        }
         cardElementFace.appendChild(iconElement);
     }else{
         let iconElement = document.createElement('img');
         iconElement.src = "./images/world.png";
+        if(innerWidth < 430 && innerWidth> 380){
+            iconElement.src = "./images/world-72.png";
+        }
         cardElementFace.appendChild(iconElement);
     }
     element.appendChild(cardElementFace);
