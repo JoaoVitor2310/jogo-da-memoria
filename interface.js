@@ -38,7 +38,6 @@ function createCardFace(face, card, element){
         iconElement.src = "./images/" + card.icon + ".png";
         cardElementFace.appendChild(iconElement);
     }else{
-        //cardElementFace.innerHTML = "&lt/&gt";
         let iconElement = document.createElement('img');
         iconElement.src = "./images/world.png";
         cardElementFace.appendChild(iconElement);
@@ -47,23 +46,24 @@ function createCardFace(face, card, element){
 }
 
 function flipCard(){
+    let playerMoves = document.querySelector("h2#moves1");
+    //console.log(playerMoves);
     if(game.setCard(this.id)){
         this.classList.add("flip");
         if(game.secondCard){
             if(game.checkMatch()){
-                let playerMoves = document.getElementById('moves');
                 playerMoves.innerHTML = `Moves: ${game.moves}`;
                 game.clearCards();
                 if(game.checkGameOver()){
                     setTimeout(()=>{
                         let gameOverLayer = document.getElementById("gameOver");
                         gameOverLayer.style.display = 'flex';
-                        let playerMoves = document.getElementById('moves');
-                        playerMoves.innerHTML += `Moves: ${this.moves++}`;
+                        playerMoves.innerHTML = `Moves: ${game.moves}`;
+                        let playerMoves2 = document.querySelector("h2#moves2");
+                        playerMoves2.innerHTML = `Moves: ${game.moves}`;
                     }, 500);
                 }
             }else{
-                let playerMoves = document.getElementById('moves');
                 playerMoves.innerHTML = `Moves: ${game.moves}`;
                 setTimeout(()=> {
                 let firstCardView = document.getElementById(game.firstCard.id);
@@ -83,4 +83,6 @@ function restart(){
     let gameOverLayer = document.getElementById("gameOver");
     gameOverLayer.style.display = 'none';
     game.moves = 0;
+    let playerMoves = document.querySelector("h2#moves1");
+    playerMoves.innerHTML = `Moves: ${game.moves}`;
 }

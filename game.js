@@ -54,7 +54,6 @@ let game = {
     unflipCards(){
         this.firstCard.flipped = false;
         this.secondCard.flipped = false;
-        //this.moves++;
         this.clearCards();
     },
 
@@ -95,7 +94,9 @@ let game = {
             randomIndex = (Math.floor(Math.random() *currentIndex));
             currentIndex--;
             [this.cards[randomIndex], this.cards[currentIndex]] = [this.cards[currentIndex], this.cards[randomIndex]];
+            console.log(this.cards[currentIndex]);
         }
+        
     }
 
 
