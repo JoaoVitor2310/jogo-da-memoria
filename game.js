@@ -15,6 +15,7 @@ let game = {
     'USA'],
 
     cards:  null,
+    moves: 0,
 
     setCard: function(id){
         let card = this.cards.filter(card=>card.id === id)[0];
@@ -37,8 +38,10 @@ let game = {
 
     checkMatch: function(){
         if(!this.firstCard || !this.secondCard){
+            this.moves++;
             return false;
         }
+        this.moves++;
         return this.firstCard.icon === this.secondCard.icon;
     },
 
@@ -51,6 +54,7 @@ let game = {
     unflipCards(){
         this.firstCard.flipped = false;
         this.secondCard.flipped = false;
+        //this.moves++;
         this.clearCards();
     },
 

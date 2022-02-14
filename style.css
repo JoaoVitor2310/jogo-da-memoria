@@ -15,10 +15,31 @@ body{
     height: 100vh;
     background-color: #c7cdd3;
 }
+h1{
+    position: absolute;
+    top: 0;
+    margin-top: 40px;
+}
+h2{
+    position: absolute;
+    top: 0;
+    margin-top: 80px;
+}
+#gameBoard{
+    width: 45%;
+    aspect-ratio: 5/4;
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+
+}
 .card{
     position: relative;
     transform-style: preserve-3d;
     transition-duration: .5s;
+}
+.card:hover{
+    cursor: pointer;
 }
 .card-front, .card-back{
     position: absolute;
@@ -64,11 +85,6 @@ body{
     margin-top: 15px;
     border-style:none
 }
-#gameBoard{
-    width: 45%;
-    aspect-ratio: 5/4;
-    display: grid;
-    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
-
+#restart:hover{
+    cursor: pointer;
 }

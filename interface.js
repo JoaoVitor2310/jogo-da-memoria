@@ -38,7 +38,10 @@ function createCardFace(face, card, element){
         iconElement.src = "./images/" + card.icon + ".png";
         cardElementFace.appendChild(iconElement);
     }else{
-        cardElementFace.innerHTML = "&lt/&gt";
+        //cardElementFace.innerHTML = "&lt/&gt";
+        let iconElement = document.createElement('img');
+        iconElement.src = "./images/world.png";
+        cardElementFace.appendChild(iconElement);
     }
     element.appendChild(cardElementFace);
 }
@@ -48,14 +51,20 @@ function flipCard(){
         this.classList.add("flip");
         if(game.secondCard){
             if(game.checkMatch()){
+                let playerMoves = document.getElementById('moves');
+                playerMoves.innerHTML = `Moves: ${game.moves}`;
                 game.clearCards();
                 if(game.checkGameOver()){
                     setTimeout(()=>{
                         let gameOverLayer = document.getElementById("gameOver");
                         gameOverLayer.style.display = 'flex';
+                        let playerMoves = document.getElementById('moves');
+                        playerMoves.innerHTML += `Moves: ${this.moves++}`;
                     }, 500);
                 }
             }else{
+                let playerMoves = document.getElementById('moves');
+                playerMoves.innerHTML = `Moves: ${game.moves}`;
                 setTimeout(()=> {
                 let firstCardView = document.getElementById(game.firstCard.id);
                 let secondCardView = document.getElementById(game.secondCard.id);
@@ -73,4 +82,5 @@ function restart(){
     startGame();
     let gameOverLayer = document.getElementById("gameOver");
     gameOverLayer.style.display = 'none';
+    game.moves = 0;
 }
