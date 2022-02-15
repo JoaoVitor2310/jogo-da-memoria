@@ -19,7 +19,6 @@ let game = {
 
     setCard: function(id){
         let card = this.cards.filter(card=>card.id === id)[0];
-        //console.log(card);
         if(card.flipped || this.lockMode){
             return false;
         }
@@ -94,7 +93,6 @@ let game = {
             randomIndex = (Math.floor(Math.random() *currentIndex));
             currentIndex--;
             [this.cards[randomIndex], this.cards[currentIndex]] = [this.cards[currentIndex], this.cards[randomIndex]];
-            console.log(this.cards[currentIndex]);
         }
         
     }
