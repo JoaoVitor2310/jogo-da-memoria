@@ -36,10 +36,7 @@ function createCardFace(face, card, element){
         let iconElement = document.createElement('img');
         iconElement.classList.add(ICON);
         iconElement.src = "./images/" + card.icon + ".png";
-        // if(innerWidth < 430 && innerWidth> 380){
-        //     iconElement.src = "./images/" + card.icon + "-110.png";
-        // }
-        if(innerWidth < 430){
+        if(innerWidth < 430  && innerWidth > 380){
             iconElement.src = "./images/" + card.icon + "-72.png";
         }
         if(innerWidth < 380){
@@ -62,7 +59,6 @@ function createCardFace(face, card, element){
 
 function flipCard(){
     let playerMoves = document.querySelector("h2#moves1");
-    //console.log(playerMoves);
     if(game.setCard(this.id)){
         this.classList.add("flip");
         if(game.secondCard){
@@ -76,6 +72,10 @@ function flipCard(){
                         playerMoves.innerHTML = `Moves: ${game.moves}`;
                         let playerMoves2 = document.querySelector("h2#moves2");
                         playerMoves2.innerHTML = `Moves: ${game.moves}`;
+                        if(game.moves == 10){
+                            let hiddenText = document.getElementById("hiddenText");
+                            hiddenText.innerHTML = `10 moves? You are cheating bro...`;
+                        }
                     }, 500);
                 }
             }else{
