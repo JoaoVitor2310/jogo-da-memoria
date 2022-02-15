@@ -39,15 +39,21 @@ function createCardFace(face, card, element){
         // if(innerWidth < 430 && innerWidth> 380){
         //     iconElement.src = "./images/" + card.icon + "-110.png";
         // }
-        if(innerWidth < 430 && innerWidth> 380){
+        if(innerWidth < 430){
             iconElement.src = "./images/" + card.icon + "-72.png";
+        }
+        if(innerWidth < 380){
+            iconElement.src = "./images/" + card.icon + "-64.png";
         }
         cardElementFace.appendChild(iconElement);
     }else{
         let iconElement = document.createElement('img');
         iconElement.src = "./images/world.png";
-        if(innerWidth < 430 && innerWidth> 380){
+        if(innerWidth < 430 && innerWidth > 380){
             iconElement.src = "./images/world-72.png";
+        }
+        if(innerWidth < 380){
+            iconElement.src = "./images/world-64.png";
         }
         cardElementFace.appendChild(iconElement);
     }
