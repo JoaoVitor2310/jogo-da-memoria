@@ -1,4 +1,4 @@
-let game = {
+let game = { // Game will be an object of back end
     lockMode: false,
     firstCard: null,
     secondCard: null,
