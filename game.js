@@ -1,4 +1,4 @@
-let game = { // Game will be an object of back end
+let game = { // Game is an object of back end
     lockMode: false, // Inicial states to check pairs
     firstCard: null,
     secondCard: null,
