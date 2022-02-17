@@ -47,7 +47,7 @@ function createCardFace(face, card, element){
         cardElementFace.appendChild(iconElement); // Adds the icon as child of iconElement
     }else{ // Back face has...
         let iconElement = document.createElement('img');
-        if(innerWidth < 430 && innerWidth > 380){ // Responsive back image
+        if(innerWidth > 430){ // Responsive back image
             iconElement.src = "./images/world.png";
         }
         if(innerWidth < 430 && innerWidth > 380){
