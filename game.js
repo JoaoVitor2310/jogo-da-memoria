@@ -60,18 +60,18 @@ let game = { // Game will be an object of back end
         return this.cards.filter(card=>!card.flipped).length == 0; // Game over state 
     },
 
-    createCardsFromFlags: function(){
-        this.cards = [];
-        this.flags.forEach((flag) => {
-            this.cards.push(this.createPairFromFlag(flag));
+    createCardsFromFlags: function(){ // Creating cards
+        this.cards = []; // Cards will be here
+        this.flags.forEach((flag) => { // Each card will have a pair
+            this.cards.push(this.createPairFromFlag(flag)); // Creates a pair
         })
-        this.cards = (this.cards.flatMap(pair => pair));
+        this.cards = (this.cards.flatMap(pair => pair)); // Separates pairs into individual cards
         this.shuffleCards();
         return this.cards;
     },
     
     createPairFromFlag: function(flag){
-        return [{
+        return [{ // Each pair of cards has id, icon and flip state
             id: this.createIdWithFlag(flag),
             icon: flag,
             flipped: false,
@@ -83,7 +83,7 @@ let game = { // Game will be an object of back end
     },
     
     createIdWithFlag: function(flag){
-        return flag + parseInt(Math.random() *100);
+        return flag + parseInt(Math.random() *100); // Creates a random id for each pair
     },
 
     shuffleCards: function(cards){
