@@ -86,13 +86,13 @@ let game = { // Game will be an object of back end
         return flag + parseInt(Math.random() *100); // Creates a random id for each pair
     },
 
-    shuffleCards: function(cards){
-        let currentIndex = this.cards.length;
+    shuffleCards: function(cards){ // Shuffles the cards
+        let currentIndex = this.cards.length; // We will start from the last to the fist one
         let randomIndex = 0;
         while(currentIndex !== 0){
-            randomIndex = (Math.floor(Math.random() *currentIndex));
-            currentIndex--;
-            [this.cards[randomIndex], this.cards[currentIndex]] = [this.cards[currentIndex], this.cards[randomIndex]];
+            randomIndex = (Math.floor(Math.random() *currentIndex)); // Random Index to shuffle
+            currentIndex--; // Decrements
+            [this.cards[randomIndex], this.cards[currentIndex]] = [this.cards[currentIndex], this.cards[randomIndex]]; // Change the cards position
         }
         
     }

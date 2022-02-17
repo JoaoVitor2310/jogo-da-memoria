@@ -10,51 +10,55 @@ function startGame(){
     initializeCards(game.createCardsFromFlags()); // Initialize and create cards
 }
 
-function initializeCards(cards){
+function initializeCards(cards){ // Creates the html of the cards
     let gameBoard = document.getElementById("gameBoard"); // Gets the game board
     gameBoard.innerHTML = ''; // Game board starts clean
-    game.cards.forEach(card => { // Every card 
-        let cardElement = document.createElement('div');
-        cardElement.id = card.id;
-        cardElement.classList.add(CARD);
-        cardElement.dataset.icon = card.icon;
-        createCardContent(card, cardElement);
-        cardElement.addEventListener('click', flipCard);
-        gameBoard.appendChild(cardElement);
+    game.cards.forEach(card => { // For each card, they will have... 
+        let cardElement = document.createElement('div'); // Creates a div
+        cardElement.id = card.id; // Receives the id
+        cardElement.classList.add(CARD); // Receives the class
+        cardElement.dataset.icon = card.icon; // Receives the icon
+        createCardContent(card, cardElement); // Creates the card content
+        cardElement.addEventListener('click', flipCard); // Deals with the click
+        gameBoard.appendChild(cardElement); // Adds the cards as child of gameBoard
     })
 }
 
 function createCardContent(card, cardElement){
-    createCardFace(FRONT, card, cardElement);
+    createCardFace(FRONT, card, cardElement); // Creates the faces of cards
     createCardFace(BACK, card, cardElement);
 }
 
 function createCardFace(face, card, element){
     let cardElementFace = document.createElement('div');
-    cardElementFace.classList.add(face);
-    if(face === FRONT){
-        let iconElement = document.createElement('img');
-        iconElement.classList.add(ICON);
-        iconElement.src = "./images/" + card.icon + ".png";
+    cardElementFace.classList.add(face); // Adds the faces class
+    if(face === FRONT){ // Front face has...
+        let iconElement = document.createElement('img'); // Receives the icon
+        iconElement.classList.add(ICON); // Adds the icon class
+        if(innerWidth > 430){ // Add icon image according to width size
+            iconElement.src = "./images/" + card.icon + ".png";
+        }
         if(innerWidth < 430  && innerWidth > 380){
             iconElement.src = "./images/" + card.icon + "-72.png";
         }
         if(innerWidth < 380){
             iconElement.src = "./images/" + card.icon + "-64.png";
         }
-        cardElementFace.appendChild(iconElement);
-    }else{
+        cardElementFace.appendChild(iconElement); // Adds the icon as child of iconElement
+    }else{ // Back face has...
         let iconElement = document.createElement('img');
-        iconElement.src = "./images/world.png";
+        if(innerWidth < 430 && innerWidth > 380){ // Responsive back image
+            iconElement.src = "./images/world.png";
+        }
         if(innerWidth < 430 && innerWidth > 380){
             iconElement.src = "./images/world-72.png";
         }
         if(innerWidth < 380){
             iconElement.src = "./images/world-64.png";
         }
-        cardElementFace.appendChild(iconElement);
+        cardElementFace.appendChild(iconElement); //Adds the icon as child of iconElement
     }
-    element.appendChild(cardElementFace);
+    element.appendChild(cardElementFace); // Adds the faces as child of element
 }
 
 function flipCard(){
