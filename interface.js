@@ -62,46 +62,46 @@ function createCardFace(face, card, element){
 }
 
 function flipCard(){
-    let playerMoves = document.querySelector("h2#moves1");
-    if(game.setCard(this.id)){
-        this.classList.add("flip");
-        if(game.secondCard){
-            if(game.checkMatch()){
-                playerMoves.innerHTML = `Moves: ${game.moves}`;
-                game.clearCards();
-                if(game.checkGameOver()){
-                    setTimeout(()=>{
+    let playerMoves = document.querySelector("h2#moves1"); // Identifies the moves
+    if(game.setCard(this.id)){ 
+        this.classList.add("flip"); // Flips the card
+        if(game.secondCard){ // If there's a second card
+            if(game.checkMatch()){ // Checks if there's a winner
+                playerMoves.innerHTML = `Moves: ${game.moves}`; // Show the moves
+                game.clearCards(); // Clear cards
+                if(game.checkGameOver()){ // If the game is over
+                    setTimeout(()=>{ // Delay to see cards
                         let gameOverLayer = document.getElementById("gameOver");
-                        gameOverLayer.style.display = 'flex';
-                        playerMoves.innerHTML = `Moves: ${game.moves}`;
+                        gameOverLayer.style.display = 'flex'; // Show the victory layer
+                        playerMoves.innerHTML = `Moves: ${game.moves}`; // Show the moves
                         let playerMoves2 = document.querySelector("h2#moves2");
-                        playerMoves2.innerHTML = `Moves: ${game.moves}`;
-                        if(game.moves == 10){
+                        playerMoves2.innerHTML = `Moves: ${game.moves}`; // Show the moves
+                        if(game.moves == 10){ // If the usar is cheating
                             let hiddenText = document.getElementById("hiddenText");
                             hiddenText.innerHTML = `10 moves? You are cheating bro...`;
                         }
                     }, 500);
                 }
-            }else{
-                playerMoves.innerHTML = `Moves: ${game.moves}`;
-                setTimeout(()=> {
+            }else{ // Continues the game
+                playerMoves.innerHTML = `Moves: ${game.moves}`; // Show the moves
+                setTimeout(()=> { // Delay to see the cards
                 let firstCardView = document.getElementById(game.firstCard.id);
                 let secondCardView = document.getElementById(game.secondCard.id);
-                firstCardView.classList.remove('flip');
+                firstCardView.classList.remove('flip'); // Remove flip class to unflip cards
                 secondCardView.classList.remove('flip');
-                game.unflipCards();
+                game.unflipCards(); // Come back to initial state cards
                 }, 1000);
             }
         }
     }
 }
 
-function restart(){
-    game.clearCards();
-    startGame();
+function restart(){ //Restarts the game
+    game.clearCards(); // Clears the compare cards
+    startGame(); // Starts the game
     let gameOverLayer = document.getElementById("gameOver");
-    gameOverLayer.style.display = 'none';
-    game.moves = 0;
+    gameOverLayer.style.display = 'none'; // Hidden gmae over layer
+    game.moves = 0; // Resets moves
     let playerMoves = document.querySelector("h2#moves1");
-    playerMoves.innerHTML = `Moves: ${game.moves}`;
+    playerMoves.innerHTML = `Moves: ${game.moves}`; //Resets moves score board
 }

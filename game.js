@@ -1,5 +1,5 @@
 let game = { // Game will be an object of back end
-    lockMode: false, // Inicial states
+    lockMode: false, // Inicial states to check pairs
     firstCard: null,
     secondCard: null,
 
@@ -17,40 +17,40 @@ let game = { // Game will be an object of back end
     cards:  null, // Inicial states
     moves: 0,
 
-    setCard: function(id){
+    setCard: function(id){ // Sets the clicked cards
         let card = this.cards.filter(card=>card.id === id)[0];
-        if(card.flipped || this.lockMode){
+        if(card.flipped || this.lockMode){ // Verifies if the card is flipped
             return false;
         }
 
-        if(!this.firstCard){
+        if(!this.firstCard){ // First card to compare
             this.firstCard = card;
             this.firstCard.flipped = true;
             return true;
-        }else{
+        }else{ // Second card to compare
             this.secondCard = card;
-            this.lockMode = true;
+            this.lockMode = true; // Lock Mode to compare
             this.secondCard.flipped = true;
             return true;
         }
     },
 
-    checkMatch: function(){
-        if(!this.firstCard || !this.secondCard){
+    checkMatch: function(){ //Checks if there's a winner
+        if(!this.firstCard || !this.secondCard){ // There is no cards selected
             this.moves++;
             return false;
         }
         this.moves++;
-        return this.firstCard.icon === this.secondCard.icon;
+        return this.firstCard.icon === this.secondCard.icon; // There is a winner
     },
 
-    clearCards: function(){
+    clearCards: function(){ // Clears the compare cards and lock mode
         this.firstCard = null;
         this.secondCard = null;
         this.lockMode = false;
     },
     
-    unflipCards(){
+    unflipCards(){ // Come back to initial state cards
         this.firstCard.flipped = false;
         this.secondCard.flipped = false;
         this.clearCards();
