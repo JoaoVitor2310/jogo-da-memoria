@@ -57,7 +57,7 @@ let game = { // Game will be an object of back end
     },
 
     checkGameOver(){
-        return this.cards.filter(card=>!card.flipped).length == 0;  
+        return this.cards.filter(card=>!card.flipped).length == 0; // Game over state 
     },
 
     createCardsFromFlags: function(){
