@@ -1,9 +1,9 @@
-let game = {
-    lockMode: false,
+let game = { // Game will be an object of back end
+    lockMode: false, // Inicial states
     firstCard: null,
     secondCard: null,
 
-    flags: ['brazil',
+    flags: ['brazil', //Flags array
     'argentina',
     'uruguay',
     'canada',
@@ -14,7 +14,7 @@ let game = {
     'sweeden',
     'USA'],
 
-    cards:  null,
+    cards:  null, // Inicial states
     moves: 0,
 
     setCard: function(id){

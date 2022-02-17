@@ -4,16 +4,16 @@ const CARD = "card";
 const ICON = "icon";
 
 
-startGame();
+startGame(); // Starts the game
 
 function startGame(){
-    initializeCards(game.createCardsFromFlags());
+    initializeCards(game.createCardsFromFlags()); // Initialize and create cards
 }
 
 function initializeCards(cards){
-    let gameBoard = document.getElementById("gameBoard");
-    gameBoard.innerHTML = '';
-    game.cards.forEach(card => {
+    let gameBoard = document.getElementById("gameBoard"); // Gets the game board
+    gameBoard.innerHTML = ''; // Game board starts clean
+    game.cards.forEach(card => { // Every card 
         let cardElement = document.createElement('div');
         cardElement.id = card.id;
         cardElement.classList.add(CARD);
